@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /plantanalis.com/
+
+    # Mengubah /Kalkulasi menjadi /Kalkulasi.html
+    RewriteRule ^kalkulasi$ Kalkulasi.html [NC,L]
+
+    # Mengubah /administrator menjadi /Administrator.html
+    RewriteRule ^administrator$ Administrator.html [NC,L]
+
+
+    # Mengubah /rekomendasi menjadi /Rekomendasi.html
+    RewriteRule ^rekomendasi$ Rekomendasi.html [NC,L]
+
+    # Mengubah /List Tanaman menjadi /List Tanaman.html
+    RewriteRule ^list\ tanaman$ List\ Tanaman.html [NC,L]
+    RewriteRule ^list_tanaman$ List\ Tanaman.html [NC,L]
+    #RewriteRule 
+    RewriteCond %{QUERY_STRING} ^query=([a-z]+)$
+    RewriteRule ^search$ Result.html [NC,L]
+
+    RewriteRule ^home$ index.html [NC,L]
+
+    RewriteRule ^login$ Login.html [NC,L]
+
+    RewriteRule ^signup$ Signup.html [NC,L]
+    RewriteRule ^tanaman_([a-zA-Z0-9_-]+)$ Penyajian.html?name=$1 [NC,L]
+    RewriteRule ^plant$ Penyajian.html [NC,L]
+
+    RewriteRule ^tanaman/([a-zA-Z]+) Penyajian.php?name=$1 [NC,L]
+    RewriteRule ^tanaman/$ tanaman [NC,L]
+
+    RewriteRule ^tanaman$ Penyajian.php [NC,L]
+
+    RewriteRule ^tanaman/$ Penyajian.php [NC,L]
+
+
+</IfModule>

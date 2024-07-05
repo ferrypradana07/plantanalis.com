@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.668">
+    <title>Kalkulasi dan Prediksi</title>
+    <link rel="icon" href="gambar/pngwing.com (1).png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+
+    body{
+        height: auto;
+        margin: 0%;
+        width: 100%;
+    }
+
+    .login a{
+        position: absolute;
+        padding-top: 1.11vw;
+        font-size: 1.48vw;
+        top: 1.48vw;
+        right: 2.22vw;
+        color: antiquewhite;
+    }
+    
+    .login a:hover {
+        color:white;
+    }
+    .icon{
+        width: 7.41%;
+        height: auto;
+        position: absolute;
+        top: 0px;
+        left: 0%;
+        margin: 1.481%;
+        z-index: 4;
+    }
+    .title{
+        position: absolute;
+        font-size: 2.93vw;
+        margin-top: 3.9%;
+        margin-left: 8.896%;
+        color: wheat;
+    }
+    .title a{
+        text-decoration: none;
+        color: wheat;
+        
+    }
+    .header{
+        width: 100%;
+        height: 10.37vw;
+        top: 0%;
+        background: linear-gradient(to bottom, rgba(0, 128, 0,8),rgba(72, 110, 72,1));
+        position: absolute;
+        z-index: 2;
+        
+    }  
+    .nav-search{
+        display: flex;
+        width: 100%;
+        margin-top: 10.37vw;
+        background-color: rgb(255, 255, 255);
+        border-bottom: 0.14vw solid rgb(214, 207, 207);
+        height: auto;
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.1);
+    }
+    .back{
+        background-color: rgba(255, 255, 255, 0.8);
+        margin-top: 1.48vw;
+        margin-bottom: 1.48vw;
+        margin-left: 1.48vw;
+        padding: 0.88vw;
+        border: 0.07vw solid rgb(167, 160, 160);
+        font-size: 1.48vw;
+        text-align: center;
+        float: left;
+        align-self: flex-start;
+        text-decoration: none;
+    }
+    .query{
+        border: 0px;
+        background-color: rgba(246, 245, 250, 0.5);
+        border: 0.28vw solid rgb(161, 157, 157);
+        width: 29.65vw;
+        height: 3.33vw;
+        margin: 1.48vw;
+        font-size: 2.22vw;
+        margin-left: 29.65vw;
+    }
+    .query:hover{
+        border: 0px;
+        background-color: rgba(246, 245, 250, 0.5);
+        border: 0.28vw solid rgb(223, 213, 213);
+        width: 29.65vw;
+        height: 3.33vw;
+        margin: 1.48vw;
+        font-size: 2.22vw;
+        margin-left: 29.65vw;
+    }
+    .button{
+        background-color: rgba(3, 199, 134, 0.8);
+        width: 4.44vw;
+        margin-top: 1.48vw;
+        margin-bottom: 1.48vw;
+        padding: 0.88vw;
+        font-size: 1.48vw;
+        text-align: center;
+        transition: color;
+    }
+    .button:hover  {
+        background-color: rgba(40, 139, 106, 0.8);
+    }
+    .button a{
+        text-decoration: none;
+        color: black;
+    }
+
+    nav {
+        margin-left: 33.35vw;
+        display: flex;
+        position: absolute;
+        z-index: 2;
+        top: 5.96vw;
+        right: 0%;
+        
+    }
+    nav>ul{
+        margin-top: 0.431vw;
+        padding: 2.23vw;
+        padding-top: 0.23vw;
+    }
+    nav ul>a{
+        color: antiquewhite;
+        font-size: 1.482vw;
+    
+    }
+    nav ul a:hover{
+        color: white;
+    }
+    .content{
+        margin: 1.48vw;
+        display: grid;
+        grid-template-areas: "kalkulasi kalkulasi"
+                             "prediksi prediksi";
+        row-gap: 5vw;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 55vw minmax(30vw,auto);
+        height: fit-content;
+        box-sizing: border-box;
+    }
+    .kalkulasi , .prediksi{
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.1);
+        background-color: rgb(247, 242, 242);
+
+    }
+    .kalkulasi{
+        grid-area: kalkulasi;
+        height: fit-content;
+        border-radius: 2vw;
+        display: grid;
+        grid-template-areas: "h3 h3"
+                             "selectnamekalkulasi selectnamekalkulasi"
+                             "contentkalkulasi contentkalkulasi";
+        grid-template-rows: 7vw 7vw minmax(10vw, 40vw ) ;
+        grid-template-columns: 40% 60%;
+
+        
+                                                                    /*prediksi*/
+    }
+    #kalkulasitotal, #kalkulasiindeks, #kalkulasiproduktivitas{
+        display: none;
+    }
+    .kalkulasi h3{
+        grid-area: h3;
+        padding: 2vw;
+        font-size: 3vw;
+        margin: 0%;
+        color: rgb(31, 30, 30);
+        background:linear-gradient(to right , rgb(168, 228, 168), rgb(150, 223, 150)) ;
+        background-clip: padding-box;
+        box-sizing: border-box;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .kalkulasi input{
+        border: none;
+        border-radius: 0.5vw;
+        width: 5vw;
+        margin-left: 3vw;
+        text-align: center;
+        font-size: 1.5vw;
+    }
+    #contentkalkulasi label{
+        margin-left: 3vw;
+        margin-bottom: 2vw;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+    #contentkalkulasi{
+        margin-bottom: 3vw;
+    }
+    #contentkalkulasi h4{
+        margin-left: 1vw;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .prediksi{
+        border-radius: 2vw;
+        grid-area: prediksi;
+        padding: 0%;
+        display: grid;
+        grid-template-areas: "h3 h3"
+                             "selecttanaman notifprediksi"
+                             "tanggaltanam notifprediksi"
+                             "cahaya tableresultprediksi"
+                             "suhu tableresultprediksi"
+                             "nutrisi tableresultprediksi"
+                             "kelembapan tableresultprediksi"
+                             "button tableresultprediksi"
+                             "none none";
+        grid-template-rows: 7vw 7vw 5.25vw 5.25vw 5.25vw 5.25vw 5.25vw 3.25vw 5vw 5vw;
+        grid-template-columns: 40% 60%;
+    }
+    .tanggaltanam{
+        margin-left: 3vw;
+        padding: 1vw;
+        padding-left: 0%;
+    }
+    .prediksi h3{
+        
+        padding: 2vw;
+        font-size: 3vw;
+        margin: 0%;
+        grid-area: h3;
+        color: rgb(31, 30, 30);
+        background:linear-gradient(to right , rgb(168, 228, 168), rgb(150, 223, 150)) ;
+        background-clip: padding-box;
+        box-sizing: border-box;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .prediksi div>p, .prediksi div>label, .prediksi div>input, .prediksi div>button{
+        font-size: 1.4vw;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .prediksi div>input{
+        text-align: center;
+        font-size: 1.5vw;
+    }
+    .suhu{
+        grid-area: suhu;
+        margin-left: 3vw;
+        padding: 1vw;
+        padding-left: 0vw;
+    }
+    .cahaya{
+        grid-area: cahaya;
+        margin-left: 3vw;
+        padding: 1vw;
+        padding-left: 0%;
+    }
+    .nutrisi{
+        grid-area: nutrisi;
+        margin-left: 3vw;
+        padding: 1vw;
+        padding-left: 0vw;
+    }
+    .kelembapan{
+        grid-area: kelembapan;
+        margin-left: 3vw;
+        padding: 1vw;
+        padding-left: 0vw;
+    }
+    .prediksi div> input{
+        text-align: center;
+        border: 0vw;
+        outline: 0.1vw solid rgba(128, 128, 128,0.2);
+        margin-right: 0.3vw;
+    }
+    
+    .input{
+        margin-left: 2vw ;
+        width: 5vw;
+        padding: 0.4vw;
+        border-radius: 0.5vw;
+        border: 0.1vw solid rgba(0, 0, 0, 0.1);
+    }
+    label{
+        font-size: 1.5vw;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: auto;
+        min-width: 30vw;
+        max-width: 55vw;
+        margin-bottom: 5vw;
+
+    }
+    tr:nth-child(1n-1):hover{
+        background-color:antiquewhite;
+    }
+    tr::after{
+        content: "";
+        background-color: yellowgreen;
+    }
+    td, th {
+        border: 0.1vw solid #dddddd;
+        text-align: center;
+        padding: 0.6vw;
+
+    }
+    th{
+        background-color: rgb(187, 243, 243);
+        padding: 0.6vw;
+        height: 3vw;
+        font-size: 1.4vw;
+    }
+    tr:nth-child(1){
+        height: 3vw;
+        padding: 0%;
+    }
+    td{
+        
+        border-style: dashed;
+        height: 2vw;
+        font-size: 1.2vw;
+    }
+    tr {
+        background-color: #fcf8f8;
+    }
+    tr:nth-child(even)::after{
+        background-color: yellow;
+    }
+    tr td:nth-child(5){
+        background-color: yellow;
+        
+    }
+    .prediksi button:hover{
+        background-color: rgb(131, 214, 131);
+    }
+
+    .footer{
+        background-color: rgb(39, 36, 36);
+        
+    }
+    .footer>.gambar{
+        justify-content: center;
+        display: flex;
+        
+    }
+    
+    .footer .gambar a{
+        background-color: rgb(255, 255, 255);
+        padding: 1.48vw;
+        border-radius: 100%;
+        background-color: #d7eedd;
+        align-items: center;
+        display: flex;
+        margin: 1.48vw;
+        margin-top: 2.223vw;
+
+    }
+    .footer .gambar a>img{
+        width: 1.85vw;
+        height: 1.85vw;
+    }
+    .overlay{
+        width: 100%;
+        min-height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2px);
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        z-index: 59;
+        top:0vw;
+        display: none;
+
+    }
+    .alert1{
+        top: 20vw;
+        width:22.22vw;
+        height: 11.11vw;
+        position:absolute;
+        border-radius: 1.11vw;
+        background-color: rgb(255, 255, 255);
+        z-index: 6;
+        padding: 1.11vw;
+        font-size: 1.11vw;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0px 10px 2.96vw rgb(0, 0, 0,0.3);
+        display: none;
+    }
+    .alert1 div:nth-child(3){
+        width: 4.44VW;
+        height: 1.11VW;
+        right: 0%;
+        bottom: 0%;
+        padding: 1.11VW;
+        text-align: center;
+        position: absolute;
+        margin: 1.11VW;
+        background-color: rgb(193, 216, 158);
+        z-index: 6;
+        font-size: 1.11VW;
+        border-radius: 100px;
+        border:  0.14vw solid gray;
+        cursor: pointer;
+    }
+    .alert1 div:nth-child(2){
+        width: 4.44VW;
+        height: 1.11vw;
+        right: 0%;
+        bottom: 0%;
+        padding: 1.11VW;
+        text-align: center;
+        position: absolute;
+        margin: 1.11VW;
+        margin-right: 10.37vw;
+        background-color: rgb(255, 255, 255);
+        z-index: 6;
+        font-size: 1.11VW;
+        border-radius: 100px;
+        border: 0.14vw solid gray;
+        cursor: pointer;
+    }
+    .alert1 div:nth-child(3):hover{
+        width: 4.44VW;
+        height: 1.11VW;
+        right: 0%;
+        bottom: 0%;
+        padding: 1.11VW;
+        text-align: center;
+        position: absolute;
+        margin: 1.11VW;
+        background-color: rgb(193, 216, 158);
+        z-index: 6;
+        font-size: 1.11VW;
+        border-radius: 100px;
+        border:  0.14vw solid rgb(190, 189, 189);
+        cursor: pointer;
+    }
+    .alert1 div:nth-child(2):hover{
+        width: 4.44VW;
+        height: 1.11VW;
+        right: 0%;
+        bottom: 0%;
+        padding: 1.11VW;
+        text-align: center;
+        position: absolute;
+        margin: 1.11VW;
+        margin-right: 10.37vw;
+        background-color: rgb(255, 255, 255);
+        z-index: 6;
+        font-size: 1.11VW;
+        border-radius: 100px;
+        border: 0.14vw solid  rgb(190, 189, 189);
+        cursor: pointer;
+    }    
+    .prediksi button{
+        background-color: rgb(109, 189, 109);
+        border-radius: 4vw ;
+        padding: 2vw;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        width: fit-content;
+        font-size: 1.1vw;
+        border: 0ch;
+    }
+ 
+    @media screen and (min-height : 95vw){
+        .content{
+            height: auto;
+            min-height: calc(100vh - 30vw);
+        }
+    }
+    #notifprediksi{
+        background-color: rgb(247, 242, 242);
+        margin-top: 2vw;
+        width:var(tableresultprediksi) ;
+        line-height: 1.7vw;
+        font-size: 1vw;
+        color: red;
+        height: auto;
+        
+    }
+    
+</style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="alert1">
+            <span>Apa anda yakin ingin keluar?</span>
+            <div class="button-notif">Ya</div>
+            <div class="button-notif">Tidak</div>
+        </div>
+    </div>
+    <a href="home"><img class="icon" src="gambar/pngwing.com (1).png" alt=""></a>
+    <div class="header">
+        <div class="title"><a href="home">Plantanalis</a></div>
+        <div class="login"><a class="loged"  href="Login" style="text-decoration: none;">Login</a></div>
+        <div class="login"><a class="logout" type="submit" style="text-decoration: none;cursor: 
+        pointer;">Logout</a></div>
+        <nav>
+            <ul><a href="favorit"  style="text-decoration: none; display :flex" class="log">Tanaman Favorit </a></ul>
+            <ul><a href="kalkulasi"  style="text-decoration: none; display :flex">Kalkulasi & Prediksi</a></ul>
+            <ul><a href="list_tanaman"  style="text-decoration: none; display :flex">List Tanaman</a></ul>
+            <ul><a href="rekomendasi"  style="text-decoration: none; display :flex">Rekomendasi</a></ul>
+        </nav>
+    </div>
+        <div class="nav-search">
+            <a href="home" class="back">Kembali</a>
+            
+        </div>
+    <div class="content">
+        <div class="kalkulasi">
+            <h3>Kalkulasi Panen</h3>
+
+            <div id="seleckkalkulasi" style="grid-area:selectnamekalkulasi;margin: 3vw;" >
+                <label for="selectnamekalkulasi">Pilih jenis perhitungan</label>
+                <select name="selectnamekalkulasi" class="input" id="selectnamekalkulasi" style="font-size: 1.4vw;padding: 0.4vw;width: fit-content;">  <!-- nama tanaman dalam database -->                
+                   <option value="kalkulasiefisiensi">Kalkulasi Efisiensi Panen</option>
+                   <option value="kalkulasitotal">Kalkulasi Total Panen</option>
+                   <option value="kalkulasiindeks">Kalkulasi Indeks Panen</option>
+                   <option value="kalkulasiproduktivitas">Kalkulasi Produktivitas Panen</option>
+                </select>
+            </div>
+            <div id="contentkalkulasi" style="grid-area: contentkalkulasi;padding: 0%;box-sizing: border-box;">
+                <div id="kalkulasiefisiensi">
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Efisiensi Penggunaan Air</h4>
+                    <label for="inputnilai11">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai11">
+                    <label for="inputnilai12">Jumlah Air yang digunakan (m<sup>3</sup>)</label>
+                    <input type="number" id="inputnilai12" ><br>
+                    <label for="result1">Efisiensi Penggunaan Air</label>
+                    <input type="text" id="result1" readonly>
+                    <label for="result1">kg/(m<sup>3</sup>)</label>
+                    
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Efisiensi Penggunaan Pupuk</h4>
+                    <label for="inputnilai21">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai21" >
+                    <label for="inputnilai22">Jumlah Pupuk yang digunakan (kg)</label>
+                    <input type="number" id="inputnilai22" ><br>
+                    <label for="result2">Efisiensi Penggunaan Pupuk</label>
+                    <input type="text" id="result2" readonly>
+                    <label for="result2"></label>
+        
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Efisiensi Penggunaan Energi</h4>
+                    <label for="inputnilai31">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai31" >
+                    <label for="inputnilai32">Jumlah Energi yang digunakan (kg)</label>
+                    <input type="number" id="inputnilai32" ><br>
+                    <label for="result3">Efisiensi Penggunaan Energy</label>
+                    <input type="text" id="result3" readonly>
+                    <label for="result3">kg/Kwh</label>
+                </div>
+
+                
+                <div id="kalkulasitotal">
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Total Produksi per Tanaman</h4>
+                    <label for="inputnilai41">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai41" >
+                    <label for="inputnilai41">Jumlah Tanaman</label>
+                    <input type="number" id="inputnilai42" ><br><br><br>
+                    <label for="result4">Efisiensi Penggunaan Air</label>
+                    <input type="text" id="result4" readonly>
+                    <label for="">kg/(m<sup>3</sup>)</label>
+                    
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Total Konsumsi Air</h4>
+                    <label for="inputnilai51">Jumlah Air yang digunakan</label>
+                    <input type="number" id="inputnilai51" >
+                    <label for="inputnilai52">Luas Lahan</label>
+                    <input type="number" id="inputnilai52" >
+                    <label for="result5">Total Konsumsi Air</label>
+                    <input type="number" id="result5" >
+                    
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Total Biaya Produksi</h4>
+                    <label for="inputnilai61">Biaya Benih</label>
+                    <input type="number" id="inputnilai61">
+                    <label for="inputnilai62">Biaya Air</label>
+                    <input type="number" id="inputnilai62">
+                    <label for="inputnilai63">Biaya Pupuk</label>
+                    <input type="number" id="inputnilai63">
+                    <label for="inputnilai64">Biaya Pestisida / Pengontrol Hama</label>
+                    <input type="number" id="inputnilai64" >
+                    <label for="result6">Total Biaya Produksi</label>
+                    <input type="number" id="result6" >
+                </div>
+                <div id="kalkulasiindeks">
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Indeks Panen</h4>
+                    <label for="inputnilai71">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai71" >
+                    <label for="inputnilai71">Hasil Panen Potensial</label>
+                    <input type="number" id="inputnilai72" ><br>
+                    <label for="result7">Indeks Panen adalah</label>
+                    <input type="text" id="result7" readonly>
+                    <label for="result7">%</label>
+                    
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Indeks Produktivitas</h4>
+                    <label for="inputnilai81">Total Keuntungan Hasil Panen</label>
+                    <input type="number" id="inputnilai81" >
+                    <label for="inputnilai82">Biaya Produktivitas (Air, pupuk, dsb)</label>
+                    <input type="number" id="inputnilai82" ><br>
+                    <label for="result8">Indeks Produktivitas adalah</label>
+                    <input type="text" id="result8" readonly>
+        
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Indeks Kesehatan Tanaman</h4>
+                    <label for="inputnilai91">Jumlah Tanaman Sehat</label>
+                    <input type="number" id="inputnilai91" >
+                    <label for="inputnilai92">Jumlah Tanaman</label>
+                    <input type="number" id="inputnilai92" ><br>
+                    <label for="result9">Indeks Kesehatan Tanaman adalah</label>
+                    <input type="text" id="result9" readonly>
+                </div>
+
+                <div id="kalkulasiproduktivitas">
+                     <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Produktivitas Waktu</h4>
+                    <label for="inputnilai101">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai101" >
+                    <label for="inputnilai102">Waktu Yang Diperlukan</label>
+                    <input type="number" id="inputnilai102" ><br>
+                    <label for="result10">Produksivitas per Waktu </label>
+                    <input type="text" id="result10" readonly>
+                    <label for="result10"></label>
+                    
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Produksivitas Kapital</h4>
+                    <label for="inputnilai111">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai111" >
+                    <label for="inputnilai112">Keuntungan Panen (Rp)</label>
+                    <input type="number" id="inputnilai112" ><br>
+                    <label for="result11">Produksivitas Kapital adalah</label>
+                    <input type="text" id="result11" readonly>
+                    <label for="result11">kg/Rp</label>
+        
+                    <h4 style="grid-area: head1;font-size: 2vw;margin-left: 1vw;">Produktivitas Lahan</h4>
+                    <label for="inputnilai121">Hasil Panen (kg)</label>
+                    <input type="number" id="inputnilai121" >
+                    <label for="inputnilai122">Luas Lahan (ha)</label>
+                    <input type="number" id="inputnilai122" ><br>
+                    <label for="result12">Produksivitas Lahan adalah</label>
+                    <input type="text" id="result12" readonly>  
+                    <label for="result12">kg/ha</label>
+                </div>
+            </div>
+        </div>
+        <div class="prediksi">
+            <h3>Prediksi Panen</h3>
+            <div class="selecttanaman" style="grid-area: selecttanaman;width: fit-content;margin-left: 3vw;margin-top: 3vw;">
+                <label for="selectnameprediksi">Pilih Tanaman</label>
+                <select id="selectnameprediksi" class="input" name="" placeholder="Pilih" style="font-size: 1.4vw;padding: 0.4vw;width: fit-content;"  >  <!-- nama tanaman dalam database -->                
+                    
+                </select>
+            </div>
+            <div class="tanggaltanam" style="grid-area:tanggaltanam ;margin-bottom: 0%;">
+                <label for="tanggaltanam">Tanggal Penanaman </label>
+                <input style="margin-left: 2vw;" type="date" id="tanggaltanam"> 
+                <label for="tanggaltanam" style="background-color: #ffffff;border: 0.1vw solid rgb(236, 231, 231);padding: 0.2vw;cursor: pointer;" onclick="timenow()">Now</label>
+            </div>
+            <div class="suhu"> 
+                <label for="suhu">kualitas suhu rata-rata / hari :</label>
+                <input type="number" id="suhu" class="input" min="0" max="100">
+                <label for="suhu">%</label>
+            </div>        
+            <div class="kelembapan">
+                <label for="kelembapan">kualitas kelembapan rata-rata :</label>
+                <input type="number" id="kelembapan" class="input" min="0" max="100">
+                <label for="kelembapan">%</label>
+            </div>                
+            <div class="cahaya">
+                <label for="cahaya">kualitas cahaya rata-rata :</label>
+                <input type="number" id="cahaya" class="input" min="0" max="100">
+                <label for="cahaya">%</label>
+            </div>                
+            <div class="nutrisi">
+                <label for="nutrisi">kualitas nutrisi rata-rata :</label>
+                <input type="number" id="nutrisi" class="input" min="0" max="100">
+                <label for="nutrisi">%</label>
+            </div>                
+            <button onclick="hitungprediksi()" style="margin-left: 3vw;grid-area: button;cursor: pointer;">Prediksi</button>
+            <table style="border-collapse: collapse;grid-area: tableresultprediksi;" id="tableresultprediksi">
+                <tr>
+                    <th>Tanaman</th>
+                    <th>Tanggal Penanaman</th>
+                    <th>Prediksi Tanggal Panen</th>
+                    <th>Status</th>
+                    <th>Prediksi</th>
+                </tr>
+                <tr>
+                    <td id="tanamanvalue"></td>
+                    <td id="tanggaltanamvalue"></td>
+                    <td id="tanggalpanenvalue"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="tanamanvalue"></td>
+                    <td id="tanggaltanamvalue"></td>
+                    <td id="tanggalpanenvalue"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="tanamanvalue"></td>
+                    <td id="tanggaltanamvalue"></td>
+                    <td id="tanggalpanenvalue"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="tanamanvalue"></td>
+                    <td id="tanggaltanamvalue"></td>
+                    <td id="tanggalpanenvalue"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="tanamanvalue"></td>
+                    <td id="tanggaltanamvalue"></td>
+                    <td id="tanggalpanenvalue"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div id="notifprediksi" style="grid-area: notifprediksi;"></div>
+            <div id="result"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="gambar">
+            <a href=""><img src="gambar/instagram.svg" alt=""></a>
+            <a href=""><img src="gambar/twitter-x.svg" alt=""></a>
+            <a href=""><img src="gambar/facebook.svg" alt=""></a>
+        </div> <br>
+        <div  style="font-size: 1.48vw; padding-bottom:2vw;color: aliceblue;text-align: center;">
+          Copyright © 2023
+        </div>
+    </div>
+</html>
+<script>
+    let login = localStorage.getItem("login");
+    let logout = document.getElementsByClassName("logout")[0];
+    let masuk = document.getElementsByClassName("loged")[0];
+    let fav = document.getElementsByClassName("log")[0];
+    let button = document.getElementsByClassName("button")[0];
+    let overlay = document.getElementsByClassName("overlay")[0];
+    let alert1 = document.getElementsByClassName("alert1")[0]; 
+    let buttontidak = document.getElementsByClassName("button-notif")[1];
+    let buttonya = document.getElementsByClassName("button-notif")[0];
+    let selectprediksi = document.getElementById("selectnameprediksi")
+    let suhuvalue = document.getElementById("suhu")
+    let kelembapanvalue = document.getElementById("kelembapan")
+    let cahayavalue = document.getElementById("cahaya")
+    let nutrisivalue = document.getElementById("nutrisi").value
+    let suhu = document.getElementById("suhu").value
+    let kelembapan = document.getElementById("kelembapan").value
+    let cahaya = document.getElementById("cahaya").value
+    let nutrisi = document.getElementById("nutrisi").value
+    let resultprediksi = document.getElementById("resultprediksi")
+
+    
+    let kalkulasiefisiensi = document.getElementById("kalkulasiefisiensi")
+    let kalkulasitotal = document.getElementById("kalkulasiindeks")
+    let kalkulasiindeks = document.getElementById("kalkulasiindeks")
+    let kalkulasiproduktivitas = document.getElementById("kalkulasiproduktivitas")
+
+
+    let tanggaltanam = document.getElementById("tanggaltanam").value
+    let maksumur 
+    let umurpanen
+    let statuserror = ""
+    let selectnamekalkulasi = document.getElementById("selectnamekalkulasi")
+    
+selectnamekalkulasi.addEventListener('change',function(){
+    let contentkalkulasi = document.getElementById("contentkalkulasi")        
+    let valuekalkulasi = selectnamekalkulasi.value
+    
+
+    let kalkulasiefisiensi = document.getElementById("kalkulasiefisiensi")
+    let kalkulasitotal = document.getElementById("kalkulasitotal")
+    let kalkulasiindeks = document.getElementById("kalkulasiindeks")
+    let kalkulasiproduktivitas = document.getElementById("kalkulasiproduktivitas")
+
+    if (valuekalkulasi === "kalkulasiefisiensi"){
+        kalkulasiefisiensi.style.display = "block" 
+        kalkulasitotal.style.display = "none" 
+        kalkulasiindeks.style.display = "none" 
+        kalkulasiproduktivitas.style.display = "none" 
+    }
+    if (valuekalkulasi === "kalkulasitotal"){
+        kalkulasiefisiensi.style.display = "none" 
+        kalkulasitotal.style.display = "block" 
+        kalkulasiindeks.style.display = "none" 
+        kalkulasiproduktivitas.style.display = "none" 
+
+    }
+    if (valuekalkulasi === "kalkulasiindeks"){
+        kalkulasiefisiensi.style.display = "none" 
+        kalkulasitotal.style.display = "none" 
+        kalkulasiindeks.style.display = "block" 
+        kalkulasiproduktivitas.style.display = "none" 
+
+    }
+    if (valuekalkulasi === "kalkulasiproduktivitas"){
+        kalkulasiefisiensi.style.display = "none" 
+        kalkulasitotal.style.display = "none" 
+        kalkulasiindeks.style.display = "none" 
+        kalkulasiproduktivitas.style.display = "block" 
+
+    }
+    
+})
+function getname() {
+    let selectnameprediksi = document.getElementById("selectnameprediksi")
+    const request = "getname";
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request
+        }, success: function(response){
+            console.log(response)
+            let hasil = JSON.parse(response)
+            if (hasil["status"] === "success"){
+                console.log(hasil["nama"][0])
+                selectnameprediksi.value = hasil["nama"][0]
+                console.log(selectnameprediksi.nodeValue)
+                console.log(selectnameprediksi.value + "kosong")
+                selectprediksi.value = hasil["nama"][0] + "dwadwa"
+                console.log(selectprediksi.value + "sa")
+                getattribute(hasil["nama"][0])
+
+                for (let index = 0; index < hasil["nama"].length; index++) {
+                    selectprediksi.innerHTML += `<option value="${hasil["nama"][index]}">${hasil["nama"][index]}</option>`
+                    console.log(hasil["nama"])
+                }
+            } else {
+
+            }
+        }
+    })
+}
+function timenow(){
+    const datenow =new Date()
+    const tanggaltanam = document.getElementById("tanggaltanam")
+    tanggaltanam.value = `${datenow.getFullYear()}-${padNumber(datenow.getMonth() + 1)}-${padNumber(datenow.getDate())}`;
+
+}
+function padNumber(number) {
+    return number < 10 ? `0${number}` : number;
+}
+let inputnilai11 = document.getElementById("inputnilai11");
+let inputnilai12 = document.getElementById("inputnilai12");
+let inputnilai21 = document.getElementById("inputnilai21");
+let inputnilai22 = document.getElementById("inputnilai22");
+let inputnilai31 = document.getElementById("inputnilai31");
+let inputnilai32 = document.getElementById("inputnilai32");
+let inputnilai41 = document.getElementById("inputnilai41");
+let inputnilai42 = document.getElementById("inputnilai42");
+let inputnilai51 = document.getElementById("inputnilai51");
+let inputnilai52 = document.getElementById("inputnilai52");
+let inputnilai61 = document.getElementById("inputnilai61");
+let inputnilai62 = document.getElementById("inputnilai62");
+let inputnilai63 = document.getElementById("inputnilai63");
+let inputnilai64 = document.getElementById("inputnilai64");
+let inputnilai71 = document.getElementById("inputnilai71");
+let inputnilai72 = document.getElementById("inputnilai72");
+let inputnilai81 = document.getElementById("inputnilai81");
+let inputnilai82 = document.getElementById("inputnilai82");
+let inputnilai91 = document.getElementById("inputnilai91");
+let inputnilai92 = document.getElementById("inputnilai92");
+let inputnilai101 = document.getElementById("inputnilai101");
+let inputnilai102 = document.getElementById("inputnilai102");
+let inputnilai111 = document.getElementById("inputnilai111");
+let inputnilai112 = document.getElementById("inputnilai112");
+let inputnilai121 = document.getElementById("inputnilai121");
+let inputnilai122 = document.getElementById("inputnilai122");
+
+let result1 = document.getElementById("result1");
+let result2 = document.getElementById("result2");
+let result3 = document.getElementById("result3");
+let result4 = document.getElementById("result4");
+let result5 = document.getElementById("result5");
+let result6 = document.getElementById("result6");
+let result7 = document.getElementById("result7");
+let result8 = document.getElementById("result8");
+let result9 = document.getElementById("result9");
+
+inputnilai11.addEventListener("change", function() {
+    // Mengambil nilai input dan mengonversi ke tipe numerik
+    const nilai11 = parseFloat(inputnilai11.value);
+    const nilai12 = parseFloat(inputnilai12.value);
+
+    // Memeriksa apakah nilai kedua positif sebelum melakukan pembagian
+    if (nilai12 >= 0) {
+        // Melakukan pembagian jika nilai kedua positif atau nol
+        result1.value = nilai11 / nilai12;
+    } else {
+        // Menetapkan pesan kesalahan jika nilai kedua negatif
+        result1.value = "Error: nilai kedua harus lebih besar dari atau sama dengan 0";
+    }
+});
+inputnilai12.addEventListener("change", function() {
+    // Mengambil nilai input dan mengonversi ke tipe numerik
+    const nilai11 = parseFloat(inputnilai11.value);
+    const nilai12 = parseFloat(inputnilai12.value);
+
+    // Memeriksa apakah nilai kedua positif sebelum melakukan pembagian
+    if (nilai11 >= 0) {
+        // Melakukan pembagian jika nilai kedua positif atau nol
+        result1.value = nilai11 / nilai12;
+    } else {
+        // Menetapkan pesan kesalahan jika nilai kedua negatif
+        result1.value = "Error: nilai kedua harus lebih besar dari atau sama dengan 0";
+    }
+});
+inputnilai21.addEventListener("change", function() {
+    const nilai21 = parseFloat(inputnilai21.value);
+    const nilai22 = parseFloat(inputnilai22.value);
+    if (nilai22 >= 0) {
+        result2.value = nilai21 / nilai22;
+    } else {
+        result2.style.border = "0.14vw solid red";
+    }
+});
+inputnilai22.addEventListener("change", function() {
+
+    const nilai21 = parseFloat(inputnilai21.value);
+    const nilai22 = parseFloat(inputnilai22.value);
+    if (nilai21 >= 0) {
+        result2.value = nilai21 / nilai22;
+    } else {
+        result2.value = "Error: nilai kedua harus lebih besar dari atau sama dengan 0";
+    }
+});
+
+inputnilai31.addEventListener("change", function() {
+    const nilai31 = parseFloat(inputnilai31.value);
+    const nilai32 = parseFloat(inputnilai32.value);
+    if (nilai32 >= 0) {
+        result3.value = nilai31 / nilai32;
+    } else {
+        result3.style.border = "0.14vw solid red";
+    }
+});
+inputnilai32.addEventListener("change", function() {
+    const nilai31 = parseFloat(inputnilai31.value);
+    const nilai32 = parseFloat(inputnilai32.value);
+    if (nilai31 >= 0) {
+        result3.value = nilai31 / nilai32;
+    } else {
+        result3.style.border = "0.14vw solid red";
+    }
+});
+
+inputnilai41.addEventListener("change", function() {
+    const nilai41 = parseFloat(inputnilai41.value);
+    const nilai42 = parseFloat(inputnilai42.value);
+    if (nilai42 >= 0) {
+        result4.value = nilai41 / nilai42;
+    } else {
+        result4.style.border = "0.14vw solid red";
+    }
+});
+inputnilai42.addEventListener("change", function() {
+    const nilai41 = parseFloat(inputnilai41.value);
+    const nilai42 = parseFloat(inputnilai42.value);
+    if (nilai41 >= 0) {
+        result4.value = nilai41 / nilai42;
+    } else {
+        result3.style.border = "0.14vw solid red";
+    }
+});
+inputnilai51.addEventListener("change", function() {
+    const nilai51 = parseFloat(inputnilai51.value);
+    const nilai52 = parseFloat(inputnilai52.value);
+    if (nilai52 >= 0) {
+        result5.value = nilai51 / nilai52;
+    } else {
+        result5.style.border = "0.14vw solid red";
+    }
+});
+inputnilai52.addEventListener("change", function() {
+    const nilai51 = parseFloat(inputnilai51.value);
+    const nilai52 = parseFloat(inputnilai52.value);
+    if (nilai51 >= 0) {
+        result5.value = nilai51 / nilai52;
+    } else {
+        result5.style.border = "0.14vw solid red";
+    }
+});
+inputnilai61.addEventListener("change", function() {
+    const nilai61 = parseFloat(inputnilai61.value);
+    const nilai62 = parseFloat(inputnilai62.value);
+    const nilai63 = parseFloat(inputnilai63.value);
+    const nilai64 = parseFloat(inputnilai64.value);
+    if (nilai62 >= 0 && nilai63 >= 0 && nilai64 >= 0  ) {
+        result6.value = nilai61 + nilai62 + nilai63 + nilai64;
+    } else {
+        result6.style.border = "0.14vw solid red";
+    }
+});
+inputnilai62.addEventListener("change", function() {
+    const nilai61 = parseFloat(inputnilai61.value);
+    const nilai62 = parseFloat(inputnilai62.value);
+    const nilai63 = parseFloat(inputnilai63.value);
+    const nilai64 = parseFloat(inputnilai64.value);
+    if (nilai61 >= 0 && nilai63 >= 0 && nilai64 >= 0  ) {
+        result6.value = nilai61 + nilai62 + nilai63 + nilai64;
+    } else {
+        result6.style.border = "0.14vw solid red";
+    }
+});
+inputnilai63.addEventListener("change", function() {
+    const nilai61 = parseFloat(inputnilai61.value);
+    const nilai62 = parseFloat(inputnilai62.value);
+    const nilai63 = parseFloat(inputnilai63.value);
+    const nilai64 = parseFloat(inputnilai64.value);
+    if (nilai61 >= 0 && nilai62 >= 0 && nilai64 >= 0  ) {
+        result6.value = nilai61 + nilai62 + nilai63 + nilai64;
+    } else {
+        result6.style.border = "0.14vw solid red";
+    }
+});
+inputnilai64.addEventListener("change", function() {
+    const nilai61 = parseFloat(inputnilai61.value);
+    const nilai62 = parseFloat(inputnilai62.value);
+    const nilai63 = parseFloat(inputnilai63.value);
+    const nilai64 = parseFloat(inputnilai64.value);
+    if (nilai61 >= 0 && nilai63 >= 0 && nilai62 >= 0  ) {
+        result6.value = nilai61 + nilai62 + nilai63 + nilai64;
+    } else {
+        result6.style.border = "0.14vw solid red";
+    }
+});
+inputnilai71.addEventListener("change", function() {
+    const nilai71 = parseFloat(inputnilai71.value);
+    const nilai72 = parseFloat(inputnilai72.value);
+    if (nilai72 >= 0) {
+        result7.value = nilai71 / nilai72;
+    } else {
+        result7.style.border = "0.14vw solid red";
+    }
+});
+inputnilai72.addEventListener("change", function() {
+    const nilai71 = parseFloat(inputnilai71.value);
+    const nilai72 = parseFloat(inputnilai72.value);
+    if (nilai71 >= 0) {
+        result7.value = nilai71 / nilai72;
+    } else {
+        result7.style.border = "0.14vw solid red";
+    }
+});
+inputnilai81.addEventListener("change", function() {
+    const nilai81 = parseFloat(inputnilai81.value);
+    const nilai82 = parseFloat(inputnilai82.value);
+    if (nilai82 >= 0) {
+        result8.value = nilai81 / nilai82;
+    } else {
+        result8.style.border = "0.14vw solid red";
+    }
+});
+inputnilai82.addEventListener("change", function() {
+    const nilai81 = parseFloat(inputnilai81.value);
+    const nilai82 = parseFloat(inputnilai82.value);
+    if (nilai81 >= 0) {
+        result8.value = nilai81 / nilai82;
+    } else {
+        result8.style.border = "0.14vw solid red";
+    }
+});
+inputnilai91.addEventListener("change", function() {
+    const nilai91 = parseFloat(inputnilai91.value);
+    const nilai92 = parseFloat(inputnilai92.value);
+    if (nilai92 >= 0) {
+        result9.value = nilai91 / nilai92;
+    } else {
+        result9.style.border = "0.14vw solid red";
+    }
+});
+inputnilai92.addEventListener("change", function() {
+    const nilai91 = parseFloat(inputnilai91.value);
+    const nilai92 = parseFloat(inputnilai92.value);
+    if (nilai91 >= 0) {
+        result9.value = nilai91 / nilai92;
+    } else {
+        result9.style.border = "0.14vw solid red";
+    }
+});
+inputnilai101.addEventListener("change", function() {
+    const nilai101 = parseFloat(inputnilai101.value);
+    const nilai102 = parseFloat(inputnilai102.value);
+    if (nilai102 >= 0) {
+        result10.value = nilai101 / nilai102;
+    } else {
+        result10.style.border = "0.14vw solid red";
+    }
+});
+inputnilai102.addEventListener("change", function() {
+    const nilai101 = parseFloat(inputnilai101.value);
+    const nilai102 = parseFloat(inputnilai102.value);
+    if (nilai101 >= 0) {
+        result10.value = nilai101 / nilai102;
+    } else {
+        result10.style.border = "0.14vw solid red";
+    }
+});
+inputnilai111.addEventListener("change", function() {
+    const nilai111 = parseFloat(inputnilai111.value);
+    const nilai112 = parseFloat(inputnilai112.value);
+    if (nilai112 >= 0) {
+        result11.value = nilai111 / nilai112;
+    } else {
+        result11.style.border = "0.14vw solid red";
+    }
+});
+inputnilai112.addEventListener("change", function() {
+    const nilai111 = parseFloat(inputnilai111.value);
+    const nilai112 = parseFloat(inputnilai112.value);
+    if (nilai111 >= 0) {
+        result11.value = nilai111 / nilai112;
+    } else {
+        result11.style.border = "0.14vw solid red";
+    }
+});
+inputnilai121.addEventListener("change", function() {
+    const nilai121 = parseFloat(inputnilai121.value);
+    const nilai122 = parseFloat(inputnilai122.value);
+    if (nilai122 >= 0) {
+        result12.value = nilai121 / nilai122;
+    } else {
+        result12.style.border = "0.14vw solid red";
+    }
+});
+inputnilai122.addEventListener("change", function() {
+    const nilai121 = parseFloat(inputnilai121.value);
+    const nilai122 = parseFloat(inputnilai122.value);
+    if (nilai121 >= 0) {
+        result12.value = nilai121 / nilai122;
+    } else {
+        result12.style.border = "0.14vw solid red";
+    }
+});
+function hitungprediksi(){
+    let statuserror = ""
+    let suhu = parseFloat(document.getElementById("suhu").value)
+    let kelembapan = parseFloat(document.getElementById("kelembapan").value )  
+    let cahaya = parseFloat(document.getElementById("cahaya").value)              
+    let nutrisi = parseFloat(document.getElementById("nutrisi").value)
+    let tanggaltanam = document.getElementById("tanggaltanam").value
+    let tanggalpanenvalue = document.getElementById("tanggalpanenvalue")
+    let tanggaltanamvalue = document.getElementById("tanggaltanamvalue")
+    let tanamanvalue = document.getElementById("tanamanvalue")
+    let tableresultprediksi = document.getElementById("tableresultprediksi")
+    let selectnameprediksi = document.getElementById("selectnameprediksi").value
+    let koefisienprediksi = 0
+    let notifprediksi = document.getElementById("notifprediksi")
+    const divtanggaltanam = document.getElementById('tanggaltanam') 
+    console.log(maksumur)
+    console.log(umurpanen)
+    console.log(suhu)
+    const datetanggaltanam = new Date(tanggaltanam)
+    statuserror = checkinput()
+    if (datetanggaltanam.getFullYear() < 2000){
+        notifprediksi.innerHTML += "Mohon masukan tahun tidak lebih dari 2000"
+        divtanggaltanam.style.border = "0.1vw solid red"
+        return 
+    } else {
+        divtanggaltanam.style.border = "border: 0.1vw solid rgba(0, 0, 0, 0.1);"
+        console.log(datetanggaltanam + "date")
+        koefisienprediksi = umurpanen / (((0.01 * 100) + (0.01 * 100) + (0.01 * 100) + (0.01 * 100)) / 4)
+        console.log(koefisienprediksi)
+        if (koefisienprediksi > maksumur){
+            console.log(koefisienprediksi)
+            console.log(tanggaltanam)
+            console.log("Prediksi melebihi batas maksimal umur tanaman")       
+            resultprediksi.innerHTML = "prediksi melebihi batas maksimal umur tanaman"  + tanggaltanam
+        } if (koefisienprediksi < maksumur){
+            console.log(tanggaltanam)
+            koefisienprediksi -= 5
+            prediksipanen = adddate(tanggaltanam, koefisienprediksi)
+            console.log("berhasil" + prediksipanen)
+            refreshtableprediksi()
+            let num = 1
+            for (let index = 0;  index < 5; index++) {
+                console.log("looping")
+                const settanggaltanam = new Date(tanggaltanam)
+                settanggaltanam.setDate(settanggaltanam.getDate())
+                const settt = settanggaltanam.toDateString()
+                prediksipanen = adddate(prediksipanen, num)
+                tableresultprediksi.innerHTML += `<tr>
+                                                    <td>${selectnameprediksi}</td>
+                                                    <td>${settt}</td>
+                                                    <td>${prediksipanen}</td>
+                                                    <td>Panen Buah</td>
+                                                    <td>Sedang</td>
+                                                 </tr>`
+             
+            }
+        }
+    }
+}
+function refreshtableprediksi(){
+    let tableresultprediksi = document.getElementById("tableresultprediksi")
+    tableresultprediksi.innerHTML = `<tr>
+                                        <th>Tanaman</th>
+                                        <th>Tanggal Penanaman</th>
+                                        <th>Prediksi Tanggal Panen</th>
+                                        <th>Status</th>
+                                        <th>Prediksi</th>
+                                    </tr>`
+}
+function adddate(date, adddate){
+    const resultdate = new Date(date);
+    resultdate.setDate(resultdate.getDate() + adddate);
+    return resultdate.toDateString();
+}
+selectprediksi.addEventListener("change", function(){
+    getattribute()
+})
+function getattribute(namaattribute){
+    console.log("berhasil")
+    let nama = selectprediksi.value
+    const parameter = nama
+    if (namaattribute !== ""){
+        nama = namaattribute
+    } if (isNaN(namaattribute)) {
+        nama = selectprediksi.value
+    }
+    const request = "getattribute"
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            nama : nama
+        }, success: function(response){
+            console.log(response)
+            let hasil = JSON.parse(response)
+            if (hasil["status"] === "success"){
+                attribute = JSON.parse(hasil["attribute"])
+                maksumur = attribute["maksumur"]
+                umurpanen = attribute["umurpanen"]
+            } else {
+
+            }
+        }
+    })
+}
+function check(){
+    if (login==="true") {
+        logout.style.display = "flex";
+        masuk.style.display = "none";
+        fav.style.display = "flex";
+    } 
+    else {
+        logout.style.display = "none";
+        masuk.style.display = "flex";
+        fav.style.display = "none";
+    }}
+logout.addEventListener("click",function(){
+    overlay.style.display = "flex";
+    alert1.style.display = "flex";
+    buttontidak.addEventListener("click", function(){
+        overlay.style.display = "none";
+        alert1.style.display = "none";
+    })
+    buttonya.addEventListener("click",function(){
+        
+        overlay.style.display = "none";
+        alert1.style.display = "none";
+        localStorage.setItem("login","false");
+        localStorage.removeItem('accounts');
+        login = localStorage.getItem("login");
+        check();
+    })
+})
+function checkinput(){
+    let suhu = document.getElementById("suhu")
+    let kelembapan = document.getElementById("kelembapan")
+    let cahaya = document.getElementById("cahaya")
+    let nutrisi = document.getElementById("nutrisi")
+    const notifprediksi = document.getElementById("notifprediksi");
+    let tanggaltanam = document.getElementById("tanggaltanam")
+    let notiferror = ""
+    let notifnan = ""
+    let statuserror = ""
+    let errordate = ""
+    let chechkdate = new Date(tanggaltanam.value)
+    borderrefresh()
+    try {
+
+        if (suhu.value > 100 || suhu.value < 0 )  {
+            notiferror = "Mohon masukkan suhu dengan benar <br>";
+            statuserror = "error"
+            suhu.style.border = "0.1vw solid red"
+        } if (isNaN(suhu.value) || suhu.value === ""){
+            notifnan = "Mohon masukan angka"
+            statuserror = "error"
+            suhu.style.border = "0.1vw solid red"
+        }
+
+        if (cahaya.value > 100 || cahaya.value < 0 ){
+            notiferror += "Mohon masukkan intensitas cahaya dengan benar <br>";
+            statuserror = "error"
+             cahaya.style.border = "0.1vw solid red"
+        } if (isNaN(cahaya.value) || cahaya.value === ""){
+            notifnan = "Mohon masukan angka"
+            statuserror = "error"
+             cahaya.style.border = "0.1vw solid red"
+        }
+
+        if (kelembapan.value > 100 || kelembapan.value < 0 ) {
+            notiferror += "Mohon masukkan kelembapan dengan benar <br>";
+            statuserror = "error"
+            kelembapan.style.border = "0.1vw solid red"
+        } if (isNaN(kelembapan.value) || kelembapan.value === ""){
+            notifnan = "Mohon masukan angka"
+            statuserror = "error"
+            kelembapan.style.border = "0.1vw solid red"
+        }
+
+        if (nutrisi.value > 100 || nutrisi.value < 0 ) {
+            notiferror += "Mohon masukkan nilai nutrisi dengan benar <br>";
+            statuserror = "error"
+            nutrisi.style.border = "0.1vw solid red"
+        } if (isNaN(nutrisi.value) || nutrisi.value === ""){
+            notifnan = "Mohon masukan angka"
+            statuserror = "error"
+            nutrisi.style.border = "0.1vw solid red"
+        } if (tanggaltanam.value === NaN){
+            notiferror += "Mohon masukan tanggal penanaman"
+            tanggaltanam.style.border = "0.1vw solid red"
+        }
+        if (isNaN(chechkdate)){
+            errordate = "<br> Mohon masukan tanggal penanaman "  
+            tanggaltanam.style.border = "0.1vw solid red"
+        }
+        console.log("berhasil chechinput akhir" + tanggaltanam.value)
+        notifprediksi.innerHTML = notiferror + notifnan + errordate ;
+        return statuserror
+    } catch (error) {
+        
+    }
+}
+
+function borderrefresh(){
+    let tanggaltanam = document.getElementById("tanggaltanam")
+    let suhu = document.getElementById("suhu")
+    let kelembapan = document.getElementById("kelembapan")
+    let cahaya = document.getElementById("cahaya")
+    let nutrisi = document.getElementById("nutrisi")
+    suhu.style.border = "0.1vw solid rgba(0, 0, 0, 0.1)"
+    cahaya.style.border = "0.1vw solid rgba(0, 0, 0, 0.1)"
+    kelembapan.style.border = "0.1vw solid rgba(0, 0, 0, 0.1)"
+    nutrisi.style.border = "0.1vw solid rgba(0, 0, 0, 0.1)"
+    tanggaltanam.style.border = "0.1vw solid rgba(0, 0, 0, 0.1)"
+}
+
+check()
+getname()
+</script>

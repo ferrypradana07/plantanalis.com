@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator</title>
+    <link rel="icon" href="gambar/pngwing.com (1).png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    body{
+        height: auto;
+        margin: 0%;
+        width: 100%;
+        background-color: rgb(250, 250, 250);
+        font-size: max(1,1.1vw);
+    }
+    .icon{
+        width: 7.41%;
+        height: auto;
+        position: absolute;
+        top: 0px;
+        left: 0%;
+        margin: 1.481%;
+        z-index: 4;
+    }
+    .title{
+        position: absolute;
+        font-size: 2.93vw;
+        margin-top: 3.9%;
+        margin-left: 8.896%;
+        color: wheat;
+    }
+    .title a{
+        text-decoration: none;
+        color: wheat;
+    }
+    .header{
+        width: 100%;
+        height: 10.37vw;
+        top: 0%;
+        background: linear-gradient(to bottom, rgba(0, 128, 0,8),rgba(72, 110, 72,1));
+        position: absolute;
+        z-index: 2;
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.3);
+    }  
+    .nav-search{
+        display: flex;
+        width: 100%;
+        margin-top: 10.37vw;
+        background-color: rgb(255, 255, 255);
+        border-bottom: 0.14vw solid rgb(214, 207, 207);
+        height: auto;
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.1);
+        
+
+    }
+    .back{
+        background-color: rgba(255, 255, 255, 0.8);
+        margin-top: 1.48vw;
+        margin-bottom: 1.48vw;
+        margin-left: 1.48vw;
+        padding: 0.88vw;
+        border: 0.07vw solid rgb(167, 160, 160);
+        font-size: 1.48vw;
+        text-align: center;
+        float: left;
+        align-self: flex-start;
+        text-decoration: none;
+    }
+    .query{
+        border: 0px;
+        background-color: rgba(246, 245, 250, 0.5);
+        border: 0.28vw solid rgb(161, 157, 157);
+        width: 29.65vw;
+        height: 3.33vw;
+        margin: 1.48vw;
+        font-size: 2.22vw;
+        margin-left: 29.65vw;
+    }
+    .query:hover{
+        border: 0px;
+        background-color: rgba(246, 245, 250, 0.5);
+        border: 0.28vw solid rgb(223, 213, 213);
+        width: 29.65vw;
+        height: 3.33vw;
+        margin: 1.48vw;
+        font-size: 2.22vw;
+        margin-left: 29.65vw;
+    }
+    .button{
+        background-color: rgba(3, 199, 134, 0.8);
+        width: fit-content;
+        margin-top: 1.48vw;
+        margin-bottom: 1.50vw;
+        padding: 0.70vw;
+        font-size: 1.48vw;
+        text-align: center;
+        transition: color;
+    }
+    .button:hover  {
+        background-color: rgba(40, 139, 106, 0.8);
+    }
+    .button a{
+        text-decoration: none;
+        color: black;
+    }
+    .database_type{
+        width: 10.49vw;
+        margin-left: 2.96vw;
+        height: 2.96vw;
+        font-size: 1vw;
+        text-align: center;
+        align-self: center;
+    }
+    .content{
+        height: fit-content;
+        border: 0.07vw solid rgb(179, 172, 172);
+        margin: 0.74vw;
+        width: 97.04vw;
+        background-color: white;
+    }
+    table{                                                      /*Table*/
+        margin: 2.96vw;
+        width:91.12vw;
+        background-color: whitesmoke;
+        padding: 0%;
+        
+    }
+    th , td{
+        height:auto;
+        width: auto;
+        text-align: center;
+        border:0.07vw solid rgb(182, 170, 161);
+        padding: 0%;
+    }
+    tr td textarea{
+        min-width: 71.12vw;
+        max-width: 71.12vw;
+        box-sizing: border-box;
+        outline: none;
+        border: 0cap;
+    }
+    tr td input{
+        box-sizing: border-box;
+        height: 100%;
+        width: 100% ;
+        display: block;
+        
+    }
+    th{
+        text-align: center;
+        width: 20vw;
+        font-size: 1.4vw;
+        background-color: rgb(250, 244, 244);
+    }
+    td{
+        min-height: 2.5vw;
+    }
+    textarea{
+        min-height: 4vw;
+        font-size: 1.48vw;
+        padding: 1vw;
+        padding-bottom: 1vw;
+    }
+    tr:nth-child(1) th, tr:nth-child(1) td textarea{
+        text-align: center;
+        font-size: 1.48vw;
+        min-height: 2.5vw;
+    }
+    tr:nth-child(2) th, tr:nth-child(2) td textarea{
+        min-height: 2.96vw;
+    }
+    tr:nth-child(3) th, tr:nth-child(3) td textarea{
+        min-height: 2.96vw;
+        font-size: 1.48vw;
+    }
+    .nav-db{
+        background-color: rgb(255, 255, 255);
+        height: fit-content;
+        margin: 2.96vw;
+        margin-top: 0%;   
+        display: grid;
+        grid-template-areas: "rowid rowid rowid"
+                             "navid navid navid"
+                             "delete update insert";
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-rows:3vw 7vw ;
+        row-gap: 2vw;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    #rowid{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: 0%;
+        padding: 1%;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0.1vw;
+        margin-right: 0.1vw;
+    }
+    .idrowdb{
+        border: 0.25vw solid rgb(73, 72, 72);
+        height: 2.8vw;
+        width: 2.8vw;
+        border-radius: 0.2vw;
+        text-align: center;
+        font-size: 1vw;
+        text-align: center;
+        margin: 0%;
+        box-sizing: border-box;
+        margin-left: 0.05vw;
+        margin-right: 0.05vw;
+        cursor: pointer;
+        outline-color: blue;
+    }
+    #idplusrow{
+        height: 3.8vw;
+        width: 3.8vw;
+        margin-left: 0.1vw;
+        margin-right: 0.1vw;
+        cursor: pointer;
+        
+    }
+    #idminusrow{
+        height: 3.8vw;
+        width: 3.8vw;
+        margin-left: 0.1vw;
+        margin-right: 0.1vw;
+        cursor: pointer;
+    }
+    .navid{
+        display: flex;
+        width: fit-content;
+        height: 5vw;
+        margin-left: 80vw;
+        float: right;
+        align-items: center;
+        grid-area: navid;
+        text-align: center;
+        
+        
+    }
+    .navid img{
+        height: 3vw;
+    }
+    #id_db{
+        border: 0.25vw solid rgb(73, 72, 72);
+        height: 2.0vw;
+        width: 2.0vw;
+        margin-bottom: 0.7vws;
+        border-radius: 0.2vw;
+        text-align: center;
+        font-size: 1.48vw;
+    }
+    #delete_db{
+        border: 0.3vw solid rgb(250, 235, 215);
+        text-align: center;
+        padding: 3vw;
+        height: fit-content;
+        margin-right: 5vw;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.48vw;
+        border-radius: 2vw;
+        background-color: rgb(250, 244, 244);
+    }
+    #delete_db:hover{
+        background-color: rgb(250, 250, 250);
+        border: 0.3vw solid rgb(250, 235, 240);
+    }
+   #send_db{
+    
+        border: 0.3vw solid antiquewhite;
+        text-align: center;
+        padding: 3vw;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2vw;
+        cursor: pointer;
+        font-size: 1.48vw;
+        background-color: rgb(250, 244, 244);
+        margin-left: 5vw;
+   }
+   #send_db:hover{
+        background-color: rgb(250, 250, 250);
+        border: 0.3vw solid rgb(250, 235, 240);
+    }
+   #update_db{
+        margin-right: 2vw;
+        margin-left: 2vw;
+        border: 0.3vw solid antiquewhite;
+        text-align: center;
+        padding: 3vw;
+        height: fit-content;
+        justify-content: center;
+        border-radius: 2vw;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.48vw;
+        background-color: rgb(250, 244, 244);
+   }
+   #update_db:hover{
+        background-color: rgb(250, 250, 250);
+        border: 0.3vw solid rgb(250, 235, 240);
+    }
+    
+    .header-db{
+        color: white;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 5.92vw;
+        background-color: rgb(142, 196, 142);
+    }
+    .header-db h4{
+        font-size: 2.96vw;
+        margin-left: 1vw;
+    }
+    .header-db h3{
+        font-size: 2.96vw;
+        margin-left: 1vw;
+    }
+    .footer{
+        background-color: rgb(39, 36, 36);
+        
+    }
+    .footer>.gambar{
+        justify-content: center;
+        display: flex;
+        
+    }
+    
+    .footer .gambar a{
+        background-color: rgb(255, 255, 255);
+        padding: 1.48vw;
+        border-radius: 100%;
+        background-color: #d7eedd;
+        align-items: center;
+        display: flex;
+        margin: 1.48vw;
+        margin-top: 2.223vw;
+
+    }
+    .footer .gambar a>img{
+        width: 1.85vw;
+        height: 1.85vw;
+    }
+
+    .nav-scrol{
+        right: 5%;
+        bottom: 10%;
+        position: fixed;
+    }
+    .nav-scrol a>img{
+        width: 3vw;
+        height: 3vw;
+        color: rgba(0, 0, 0,0.5);
+        opacity: 0.5;
+    }
+    .nav-scrol a>img:hover{
+        opacity: 1;
+        width: 3vw;
+        height: 3vw;
+        color: rgba(0, 0, 0,0.5);
+        
+    }
+    #referensi , #attribute{
+        height: 6vw;
+        min-height: 4vw;
+    }
+    #uploadForm{
+        display: grid;
+        width: fit-content;
+        grid-template-areas: "input gambarr"
+                             "name  gambarr"
+                             "none  gambarr";
+        grid-template-columns: fit-content 10vw;
+        grid-template-rows: 6vw 4vw 4.1vw;
+    }
+    #previewgambar{
+        width: 10vw;
+        height: 10vw;
+        border: 0.1vw solid rgb(202, 13, 13);
+        grid-area: gambarr;
+        display: block;
+    }
+    #inputgambar{
+        grid-area: input;
+        border: 0.1vw solid black;
+        align-self: center;
+        font-size: 1vw;
+        padding: 0.7vw;
+        display: flex;
+
+    }
+    #gambar{
+        grid-area: name;
+        font-size: 1vw;
+        padding-left: 0.5vw;
+
+    }
+    @media screen and (min-height : 95vw){
+        .content{
+            height: auto;
+            min-height: calc(100vh - 30vw);
+        
+        }
+    }
+    
+</style>
+</head>
+<body>
+    <a href="home"><img class="icon" src="gambar/pngwing.com (1).png" alt=""></a>
+    <div class="header">
+        <div class="title"><a href="home">Plantanalis</a></div>
+    </div>
+        <div class="nav-search">
+            <a href="home" class="back">Kembali</a>
+            <input class="query" style="padding-left: 0.5vw;" type="text" >
+            <div class="button" style="cursor: pointer;" onclick="searchdb()">search</div>
+        </div>
+    <div class="content">
+        <div class="header-db"><h4>Database <h3 class="type">Tanaman</h3></h4></div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <td><input name="" style="height: 3vw;font-size: 2vw;padding-left: 1vw;border: none;text-align: center;" id="id" placeholder="10" cols="30" rows="1" readonly></input></td>
+            </tr>
+            <tr>
+                <th>Nama</th>
+                <td><textarea name="" id="nama" placeholder='{"nama" : "Sawi Hijau", "latin" :"Brassica juncea L"}' cols="30" rows="1" style="text-align: center;font-size: 2vw;text-justify:distribute;"></textarea></td>
+            </tr>
+            <tr>
+                <th>Path Gambar</th>
+                <td id="pathgambar">
+                    <form id="uploadForm" enctype="multipart/form-data" method="POST">
+                        <input style="font-size: 1vw;" type="file" accept="image/*" id="inputgambar" name="inputgambar" onchange="inputgambara()">
+                        <input style="font-size: 1.4vw;" type="text" id="gambar" name="gambar" readonly>
+                        <img id="previewgambar" style="width:13.8vw; height:13.8vw;max-width: 300px; max-height: 300px; display: none;"  onclick="upload()">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th>Deskripsi</th>
+                <td><textarea name="" id="deskripsi" placeholder="langsung saja..." cols="30" rows="5" ></textarea></td>
+            </tr>    
+            <tr>
+                <th>Umur</th>    
+                <td>
+                    <textarea name="" id="umur" placeholder='deskripsi' cols="30" rows="2"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>Musim</th>
+                <td><textarea name="" id="musim" placeholder="langsung saja..." cols="30" rows="2"></textarea></td>
+            </tr>
+            <tr>
+                <th>Suhu</th>
+                <td><textarea name="" id="suhu" placeholder='15 (Suhu pertumbuhan optimal Dalam Celcius), Deskripsi : ...... ' cols="30" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <th>Kelembapan</th>
+                <td><textarea name="" id="kelembapan" placeholder='kelembapan : 78% , "deskripsi" : ......."' cols="30" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <th>Tanah yang Ideal</th>
+                <td><textarea name="" id="tanah" placeholder='{"deskripsi":"................" , "tanah" : {"drainase yang baik" : "Tanah  harus  memiliki  kemampuan  drainase  yang  baik...." , "..." : "..."}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Ketinggian Tanah Minimal</th>    
+                <td><input name="" id="ketinggian_tanah_minimum" placeholder='300 (dalam mdpl)' cols="30" rows="2" style="height: 3vw;font-size: 1.4vw;padding-left: 1vw;border: none;"></input></td>
+            </tr>
+            <tr>
+                <th>Ketinggian Tanah Maksimal</th>    
+                <td><input style="height: 3vw;font-size: 1.4vw;padding-left: 1vw;border: none;" name="" id="ketinggian_tanah_maksimal" placeholder='150 (dalam mdpl)' cols="30" rows="2"></input></td>
+            </tr>
+            <tr>
+                <th>Nutrisi</th>
+                <td><textarea name="" id="nutrisi" placeholder='{"deskripsi": "........" , "nutrisi" : { "kalsium" : "kalsium adalah...." , "fosfor" : "fosfor merupakan ...." , "Key" : "value"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Pupuk</th>
+                <td><textarea name="" id="pupuk" placeholder='{"deskripsi":"......" , "pupuk" : {"pupuk npk" : "pupuk npk berguna ..." , "key" : "value"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Hama</th>
+                <td><textarea name="" id="hama" placeholder='{"deskripsi": " penjelasan pengatar" , "hama " : {"wereng" : "hewan ini sering menyerang ..." , "key" : " value"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Penyakit</th>
+                <td><textarea name="" id="Penyakit" placeholder='{"deskripsi": " penjelasan pengatar" , "penyakit " : {"pentakit1" : "pentakit ini sering menyerang ..." , "key" : " value"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Metode Penanaman</th>
+                <td><textarea name="" id="metode" placeholder='{"deskripsi":".......","langkah" : {"langkah1" : "mempersiapkan media tanahm yang baik...." "(jelaskan sampai langkah terakhir)"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Perawatan</th>
+                <td><textarea name="" id="perawatan" placeholder='{"deskripsi": " penjelasan pengatar" , "perawatan " : {"perawatan1" : "perawatan ini bertujuan ..." , "key" : " value"}}' cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th>Referensi</th>
+                <td><textarea name="" id="referensi" placeholder='{"deskripsi":"....." ,  atau langsung ["sumber wikipedia", "sumber jurnal",... (dalam bentuk array)]}' cols="30" rows="8"></textarea></td>
+            </tr>
+            <tr>
+                <th>Attribute</th>
+                <td><textarea name="" id="attribute" placeholder='{"umur": 90 (dalam hari), "suhumin", 40 (dalam Celcius), "suhumax" : 50 (dalam Celcius)}' cols="30" rows="8"></textarea></td>
+            </tr>
+        </table>
+        <div class="nav-db"> 
+            <div id="rowid" style="grid-area: rowid;">
+                
+            </div>
+            <div class="navid">
+                <img src="icon/caret-left.svg" alt="" id="idminus" style="grid-area: imgleft;cursor: pointer;" onclick="idberkurang()" >
+                <input type="text" id="id_db" style="grid-area: id;">
+                <img src="icon/caret-right.svg" alt="" id="idplus" style="grid-area: imgright;cursor: pointer;" onclick="idbertambah()">
+            </div>
+            <div id="send_db" style="grid-area: insert" onclick="insertdb()">Insert</div>
+            <div id="update_db" style="grid-area: update" onclick="updatedb()">Update</div>
+            <div id="delete_db" style="grid-area: delete" onclick="deletedb()">Delete</div>
+        </div>
+       <div id="notifdb" style=" width: 99.8%;font-size: 1.48vw;height: fit-content;text-align: center; background-color: aqua;
+       padding-top: 4vw;padding-bottom: 4vw;border: 0.2vw solid green;">
+            berhasil
+       </div>
+    </div>
+    <div class="footer">
+        <div class="gambar">
+            <a href="" ><img src="gambar/instagram.svg" alt="" ></a>
+            <a href=""><img src="gambar/twitter-x.svg" alt=""></a>
+            <a href=""><img src="gambar/facebook.svg" alt=""></a>
+        </div> <br>
+        <div style="font-size: 1.48vw;padding: 1.48vw;color: aliceblue;text-align: center;">
+          Copyright © 2023
+        </div>
+    </div>
+    <div class="nav-scrol">
+        <a href=""><img src="icon/arrow-up-circle-fill.svg" alt=""></a>
+    </div>
+</html>
+<script>
+    
+    function upload() {
+        event.preventDefault(); // Mencegah pengiriman formulir secara konvensional
+        var input = document.getElementById("inputgambar");
+        if (input.files && input.files[0]) {
+            const xhr = new XMLHttpRequest();
+            const formdata = new FormData(document.getElementById("uploadForm"));
+
+            xhr.open("POST", 'upload.php'); 
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    alert("Berhasil mengunggah gambar");
+                } else {
+                    alert("Gagal mengunggah gambar");
+                }
+            }
+            xhr.send(formdata);
+        } else {
+            // Tambahkan logika untuk menangani jika tidak ada file yang dipilih
+        }
+    }
+
+    function inputgambara() {
+        var input = document.getElementById("inputgambar");
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var previewImage = document.getElementById("previewgambar");
+                previewImage.src = e.target.result;
+                previewImage.style.display = "block";
+            };
+            reader.readAsDataURL(input.files[0]);
+            var fileName = input.files[0].name;
+            var imageNameElement = document.getElementById("gambar");
+            imageNameElement.value = "gambar/" + fileName;
+        }
+    }
+    const input = document.getElementById("Input1");
+    const button = document.getElementsByClassName("button")[0];
+    const iddb = document.getElementById("id_db");
+    let home = 1;
+    iddb.value = home;
+    const rowid = document.getElementById("rowid")
+    let rowloop = 30
+    
+    const id = document.getElementById("id"); //1
+    const nama = document.getElementById("nama"); //2
+    const gambar = document.getElementById("gambar"); //3
+    const deskripsi = document.getElementById("deskripsi"); //4
+    const umur = document.getElementById("umur"); //5
+    const musim = document.getElementById("musim"); //6
+    const suhu = document.getElementById("suhu"); //7
+    const kelembapan = document.getElementById("kelembapan"); //8
+    const tanah = document.getElementById("tanah"); //9
+    const ketinggian_tanah_maksimal = document.getElementById("ketinggian_tanah_maksimal"); //10
+    const ketinggian_tanah_minimum = document.getElementById("ketinggian_tanah_minimum"); //11
+    const hama = document.getElementById("hama"); //12
+    const penyakit = document.getElementById("Penyakit"); //13
+    const nutrisi = document.getElementById("nutrisi"); //14
+    const pupuk = document.getElementById("pupuk"); //15
+    const metode = document.getElementById("metode"); //16
+    const perawatan = document.getElementById("perawatan"); //17
+    const referensi = document.getElementById("referensi"); //18
+    const attribute = document.getElementById("attribute")
+
+
+    const idminus = document.getElementById("idminus");
+    const idplus = document.getElementById("idplus");
+    const send = document.getElementById("send_db"); 
+    const notifdb = document.getElementById("notifdb");
+    const query = document.getElementsByClassName("query")[0]  
+
+    query.addEventListener("keydown", function(){
+    if(event.keyCode === 13){
+        searchdb()
+    }
+})
+
+function searchdb(){
+    const request = "searchdbname";
+    const queryelement = document.getElementsByClassName("query")[0].value
+    const nama = queryelement
+    console.log(nama)
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            query : nama
+        },
+        success: function(response){
+            console.log(response)
+            let hasil = JSON.parse(response);
+            if (hasil["status"] === "success"){
+                notifdb.innerHTML = hasil["message"]
+                iddb.value = hasil["id"]
+                id.value = hasil["id"]
+                nama.value = hasil["nama"];
+                if (hasil.value === ""){
+                    gambar.value = "gambar/"
+                } else {
+                    gambar.value = hasil["gambar"]
+                    preview()
+                }
+                deskripsi.value = hasil["deskripsi"]
+                umur.value = hasil["umur"]
+                musim.value = hasil["musim"]
+                suhu.value = hasil["suhu"]
+                kelembapan.value = hasil["kelembapan"]
+                tanah.value = hasil["tanah"]
+                ketinggian_tanah_maksimal.value = hasil["tinggi tanah max"]
+                ketinggian_tanah_minimum.value = hasil["tinggi tanah min"]
+                nutrisi.value = hasil["nutrisi"]
+                pupuk.value = hasil["pupuk"]
+                hama.value = hasil["hama"]
+                penyakit.value = hasil["penyakit"]
+                metode.value = hasil["metode"]
+                perawatan.value = hasil["perawatan"]
+                referensi.value = hasil["referensi"]
+                attribute.value = hasil["attribute"]
+
+        } else {
+            notifdb.innerHTML = hasil["message"]
+            id.value = ""
+            nama.value = ""
+            gambar.value = "gambar/"
+            deskripsi.value = ""
+            umur.value = ""
+            musim.value = ""
+            suhu.value = ""
+            kelembapan.value = ""
+            tanah.value = ""
+            ketinggian_tanah_maksimal.value = ""
+            ketinggian_tanah_minimum.value = ""
+            nutrisi.value = ""
+            pupuk.value = ""
+            hama.value = ""
+            penyakit.value = ""
+            metode.value = ""
+            perawatan.value = ""
+            referensi.value = ""
+            attribute.value = ""
+
+        }}
+    })
+}
+
+function idbertambah(){
+    home = Number(home)
+    home += 1;
+    iddb.value = home ;
+    readdb();
+
+}
+function idberkurang(){
+    home = Number(home)
+    if (home === 1){
+        home = 1;
+        return;
+    } else {
+        home -= 1;
+        iddb.value = home;
+        readdb();
+    }
+}
+iddb.addEventListener("keydown" , function(){
+    if(event.keyCode === 13){
+        home = iddb.value
+        readdb();
+    }
+})
+function deletedb(){
+    const request = "deletedb"
+    
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            id : home
+        }, success : function(respons){
+            let hasil = JSON.parse(respons)
+            if(hasil["status"] === "success"){
+                notifdb.innerHTML = hasil["message"]
+            } else {
+                notifdb.innerHTML = hasil["message"]
+            }
+        }
+    })
+
+}
+function updatedb(){
+    upload();
+    const request = "updatedb";
+    const id = document.getElementById("id").value; //1
+    const nama = document.getElementById("nama").value; //2
+    const gambar = document.getElementById("gambar").value; //3
+    const deskripsi = document.getElementById("deskripsi").value; //4
+    const umur = document.getElementById("umur").value; //5
+    const musim = document.getElementById("musim").value; //6
+    const suhu = document.getElementById("suhu").value; //7
+    const kelembapan = document.getElementById("kelembapan").value; //8
+    const tanah = document.getElementById("tanah").value; //9
+    const ketinggian_tanah_maksimal = document.getElementById("ketinggian_tanah_maksimal").value; //10
+    const ketinggian_tanah_minimum = document.getElementById("ketinggian_tanah_minimum").value; //11
+    const hama = document.getElementById("hama").value; //12
+    const penyakit = document.getElementById("Penyakit").value;
+    const nutrisi = document.getElementById("nutrisi").value; //13
+    const pupuk = document.getElementById("pupuk").value; //14
+    const metode = document.getElementById("metode").value; //15
+    const perawatan = document.getElementById("perawatan").value;
+    const referensi = document.getElementById("referensi").value; //16
+    const attribute = document.getElementById("attribute").value
+
+
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            id : home,
+            nama :  nama,	
+            gambar	: gambar,
+            deskripsi : deskripsi,
+            umur : umur,
+            musim : musim,
+            suhu : suhu,
+            kelembapan : kelembapan,
+            tanah : tanah,
+            tinggi_tanah_min : ketinggian_tanah_minimum,	
+            tinggi_tanah_max : ketinggian_tanah_maksimal,
+            nutrisi : nutrisi,
+            pupuk : pupuk,
+            hama : hama,
+            penyakit : penyakit,
+            metode : metode,
+            perawatan : perawatan,
+            referensi : referensi,
+            attribute : attribute
+        },
+        success : function(response){
+            let hasil = JSON.parse(response);
+            if(hasil["status" === "success"]){
+                notifdb.innerHTML = hasil["message"]
+            } else {
+                notifdb.innerHTML = hasil["message"]
+            }
+        }
+    })
+}
+
+function insertdb(){
+    upload()
+    const request = "insertdb";
+    
+    const id = document.getElementById("id").value; //1
+    const nama = document.getElementById("nama").value; //2
+    const gambar = document.getElementById("gambar").value; //3
+    const deskripsi = document.getElementById("deskripsi").value; //4
+    const umur = document.getElementById("umur").value; //5
+    const musim = document.getElementById("musim").value; //6
+    const suhu = document.getElementById("suhu").value; //7
+    const kelembapan = document.getElementById("kelembapan").value; //8
+    const tanah = document.getElementById("tanah").value; //9
+    const ketinggian_tanah_maksimal = document.getElementById("ketinggian_tanah_maksimal").value; //10
+    const ketinggian_tanah_minimum = document.getElementById("ketinggian_tanah_minimum").value; //11
+    const hama = document.getElementById("hama").value; //12
+    const penyakit = document.getElementById("Penyakit").value;
+    const nutrisi = document.getElementById("nutrisi").value; //13
+    const pupuk = document.getElementById("pupuk").value; //14
+    const metode = document.getElementById("metode").value; //15
+    const perawatan = document.getElementById("perawatan").value;
+    const referensi = document.getElementById("referensi").value; //16
+    const attribute = document.getElementById("attribute").value
+
+
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            id : home,
+            nama :  nama,	
+            gambar	: gambar,
+            deskripsi : deskripsi,
+            umur : umur,
+            musim : musim,
+            suhu : suhu,
+            kelembapan : kelembapan,
+            tanah : tanah,
+            tinggi_tanah_min : ketinggian_tanah_minimum,	
+            tinggi_tanah_max : ketinggian_tanah_maksimal,
+            nutrisi : nutrisi,
+            pupuk : pupuk,
+            hama : hama,
+            penyakit : penyakit,
+            metode : metode,
+            perawatan : perawatan,
+            referensi : referensi,
+            attribute : attribute
+        },
+        success : function(response){
+            console.log(response)
+            let hasil = JSON.parse(response);
+            if (hasil["status"] === "success"){
+                notifdb.innerHTML = hasil["message"]
+            } else {
+                notifdb.innerHTML = hasil["message"]
+            }
+            
+        }
+    })
+}
+let rowloopstart 
+function idrowberkurang(){
+    console.log(rowloopstart)
+    if(rowloopstart === 1 || rowloopstart === 31){
+
+    } else {
+        rowloopstart -= 60
+        console.log(rowloopstart)
+        readiddb()
+    }
+}
+function idrowbertambah(){
+    readiddb()
+}
+function readiddb(){
+    let loopid = "";
+    rowid.innerHTML = ``
+    if (isNaN(rowloopstart) || rowloopstart < 0){
+        rowloopstart = 1
+        console.log("masuk")
+    } 
+    console.log(rowloopstart + " ajas minta id limit")
+    let request = "readdblimit"
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            rowloopstart : rowloopstart
+        },success:function(response){
+            console.log(response)
+            let hasil = JSON.parse(response)
+            console.log(rowloopstart)
+            if (hasil["status"] === "success"){
+                if (isNaN(rowloopstart)){
+                    rowloopstart = 1
+                    console.log("masuk")
+                }
+                console.log(hasil["status"])
+                console.log(hasil["id"])
+                console.log("sebelum loop "+rowloopstart)
+                let arrayid = hasil["id"]
+                let found = ""
+                rowid.innerHTML =`<img src="icon/caret-left.svg" alt="" id="idminusrow" style="grid-area: imgleft;cursor: pointer;" onclick="idrowberkurang()" >`
+                for (let home = 0; home < rowloop ; home++) {  
+                    found = arrayid.includes("" + rowloopstart + "")
+                    if(found){
+                        loopid += `<input class="idrowdb" type="text" style="border: 0.25vw solid green; grid-area: gridrowid;" value="${rowloopstart}" onclick="readdb(${rowloopstart})" readonly>`
+                        rowloopstart += 1
+                        console.log(rowloopstart + " rowlopstrat")
+                    } else {
+                        loopid += `<input class="idrowdb" type="text" style="border: 0.25vw solid red;grid-area: gridrowid;" value="${rowloopstart}" readonly>`
+                        rowloopstart += 1
+                        console.log(home + " else")
+                        console.log(rowloopstart + " rowlopstrat")
+                    }
+                }
+                rowid.innerHTML += loopid
+                rowid.innerHTML += `<img src="icon/caret-right.svg" alt="" id="idplusrow" style="grid-area: imgright;cursor: pointer;" onclick="idrowbertambah()">`
+
+            } else {
+                rowid.innerHTML =`<img src="icon/caret-left.svg" alt="" id="idminusrow" style="grid-area: imgleft;cursor: pointer;" onclick="idrowberkurang()" >`
+                for (let home = 0; home < rowloop ; home++) {  
+                    loopid += `<input class="idrowdb" type="text" style="border: 0.25vw solid red;grid-area: gridrowid;" value="${rowloopstart}" readonly>`
+                    rowloopstart += 1
+                }
+                rowid.innerHTML += loopid
+                rowid.innerHTML += `<img src="icon/caret-right.svg" alt="" id="idplusrow" style="grid-area: imgright;cursor: pointer;" onclick="idrowbertambah()">`
+            }
+        }
+    })
+    
+    
+}
+readiddb()
+function readdb(idrow){
+    if (isNaN(idrow)){
+        home = home
+        iddb.value = home
+    } else {
+        home = idrow
+        iddb.value = home
+    }
+    const request = "readbyid";
+    console.log(home)
+
+    
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            id : home
+        },
+        success : function(response){
+            console.log(response)
+            let hasil = JSON.parse(response);
+            if (hasil["status"] === "success"){
+                notifdb.innerHTML = hasil["message"]
+                id.value = hasil["id"]
+                nama.value = hasil["nama"];
+                if (hasil.value === ""){
+                    gambar.value = "gambar/"
+                } else {
+                    gambar.value = hasil["gambar"]
+                    preview()
+                }
+                deskripsi.value = hasil["deskripsi"]
+                umur.value = hasil["umur"]
+                musim.value = hasil["musim"]
+                suhu.value = hasil["suhu"]
+                kelembapan.value = hasil["kelembapan"]
+                tanah.value = hasil["tanah"]
+                ketinggian_tanah_maksimal.value = hasil["tinggi tanah max"]
+                ketinggian_tanah_minimum.value = hasil["tinggi tanah min"]
+                nutrisi.value = hasil["nutrisi"]
+                pupuk.value = hasil["pupuk"]
+                hama.value = hasil["hama"]
+                penyakit.value = hasil["penyakit"]
+                metode.value = hasil["metode"]
+                perawatan.value = hasil["perawatan"]
+                referensi.value = hasil["referensi"]
+                attribute.value = hasil["attribute"]
+
+        } else {
+            console.log("masuk else gagal")
+            notifdb.innerHTML = hasil["message"]
+            id.value = home
+            nama.value = ""
+            gambar.value = "gambar/"
+            deskripsi.value = ""
+            umur.value = ""
+            musim.value = ""
+            suhu.value = ""
+            kelembapan.value = ""
+            tanah.value = ""
+            ketinggian_tanah_maksimal.value = ""
+            ketinggian_tanah_minimum.value = ""
+            nutrisi.value = ""
+            pupuk.value = ""
+            hama.value = ""
+            penyakit.value = ""
+            metode.value = ""
+            perawatan.value = ""
+            referensi.value = ""
+            attribute.value = ""
+            preview()
+        }}
+    })
+}
+readdb();
+function preview(){
+    var previewImage = document.getElementById("previewgambar");
+    if (gambar.value === "gambar/" || gambar.value === ""){
+        previewImage.src = gambar.value;
+        return
+    } else {
+        previewImage.src = gambar.value;
+        previewImage.style.display = "block";
+    }
+}
+
+// $nama 	$gambar	$deskripsi $umur $musim	$suhu $kelembapan $tanah $tinggi_tanah_min	$tinggi_tanah_max	$nutrisi $pupuk	$hama $metode	$referensi
+
+
+// nama 	
+// gambar	
+// deskripsi
+// umur
+// musim	
+// suhu
+// kelembapan
+// tanah
+// tinggi_tanah_min	
+// tinggi_tanah_max	
+// nutrisi
+// pupuk	
+// hama	
+// metode	
+// referensi
+
+</script>

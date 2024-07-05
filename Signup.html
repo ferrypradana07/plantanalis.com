@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="icon" href="gambar/pngwing.com (1).png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    body{
+        height: auto;
+        margin: 0%;
+        width: 100%;
+        background-color: rgba(237, 242, 238,0.5);
+    }
+    .login a{
+        position: absolute;
+        padding: 1.11vw;
+        font-size: 1.48vw;
+        top: 1.48vw;
+        right: 1%;
+        color: antiquewhite;
+    }
+    
+    .login a:hover {
+        color:white;
+    }
+    .icon{
+        width: 7.41%;
+        height: auto;
+        position: absolute;
+        top: 0px;
+        left: 0%;
+        margin: 1.481%;
+        z-index: 4;
+        
+    }
+    .title{
+        position: absolute;
+        font-size: 2.93vw;
+        margin-top: 3.9%;
+        margin-left: 8.896%;
+        color: wheat;
+    }
+    .title a{
+        text-decoration: none;
+        color: wheat;
+    }
+    .header{
+        width: 100%;
+        height: 10.37vw;
+        top: 0%;
+        background: linear-gradient(to bottom, rgba(0, 128, 0,8),rgba(72, 110, 72,1));
+        position: absolute;
+        z-index: 2;
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.3);
+    }  
+    
+    .button a{
+        text-decoration: none;
+        color: black;
+    }
+    nav {
+        margin-left: 33.35vw;
+        display: flex;
+        position: absolute;
+        z-index: 2;
+        top: 2.96vw;
+        right: 0%;
+        
+    }
+    nav>ul{
+        margin-top: 1.431vw;
+        padding: 2.23vw;
+    }
+    nav ul>a{
+        color: antiquewhite;
+        font-size: 1.482vw;
+
+    }
+    nav ul>a:hover{
+        color: white;
+    }
+    .content{
+        display: flex;
+        padding: 1.482vw;
+        margin-top: 11.86vw;
+        background-color: rgba(211, 204, 190, 0.7);
+        border-radius: 1.482vw;
+        margin-bottom: 1.482vw;
+        box-shadow: 0.14vw 0.28vw 0.28vw rgba(0, 0, 0, 0.3);
+    }
+    .content img{
+        border-radius: 1.482vw;
+        width: 96.81vw;
+        height: 54.18vw;
+    }
+    form{
+        background-color: rgba(255, 255, 255,0.97);
+        left: 59.97vw;
+        height: 48.70vw;
+        font-size: 1.48vw;
+        width: 32.61vw;
+        z-index: 2;
+        border-radius: 1.482vw;
+        float: right;
+        margin: 1.482vw;
+        padding: 1.482vw;
+        display: grid;
+        position: absolute;
+        background-color: rgba(255, 255, 255,0.97);
+        grid-template-areas: "head "
+                             "notif "
+                             "user "
+                             "pass "
+                             "button "
+                             "account ";
+        grid-template-rows: 4vw 3vw fit-content fit-content 3vw 5vw;
+        grid-template-columns: 100% ;
+        box-sizing: border-box;
+        z-index: 5;
+        font-size: 1.4vw;
+
+    }
+    h1{
+        grid-area: head;
+        font-size: 1.48vw;
+        width: 100%;
+        height: 4vw;
+        padding: 0%;
+        margin-top: 5.55vw;
+        margin-bottom: 7.78vw;
+        font-size: 2.96vw;
+    }
+    #notif{
+        grid-area: notif;
+        padding: 0%;
+        margin-left: 1vw;
+        width: 100%;
+        height: 2vw;
+    }
+    #user{
+        grid-area: user;
+        padding: 0%;
+        height: 3vw;
+        margin: 1vw;
+        background-color: rgba(255, 255, 255,0);
+        font-size: 1.4vw;
+        border: 0.1vw solid red;
+        box-sizing: border-box;
+        border : none;
+        outline: none;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        border-bottom: 0.14vw solid gray;
+    }
+    #pass{
+        background-color: rgba(255, 255, 255,0);
+        grid-area: pass;
+        outline: none;
+        padding: 0%;
+        height: 3vw;
+        font-size: 1.4vw;
+        margin: 1vw;
+        border: 0.1vw solid red;
+        border : none;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        border-bottom: 0.14vw solid gray;
+    }
+    #inline-radio{
+        display: grid;
+        grid-area: "radioo label forgot";
+        grid-template-rows: 1.48vw;
+        float: inline-start;
+        align-items: start;
+        grid-area: radio;
+        margin: 0%;
+        padding: 0%;
+        
+    }
+    #inline-account{
+        padding: 0%;
+        grid-area: account;
+        display: flex;
+    }
+    input[type = "radio"]{
+        padding: 0%;
+        margin-top: 0.5vw;
+        grid-area: radioo;
+        margin: 0%;
+        width: 1.4vw;
+        height: 1.9vw;
+        position: absolute;
+    }
+    #me{
+        position: absolute;
+        margin-left: 2vw;
+        grid-area: label;
+    }
+    #forgot{
+        position: absolute;
+        margin-left: 15vw;
+        grid-area: forgot;
+    }
+    span{
+        padding: 0%;
+        font-size: 1.48vw;
+    }
+    label{
+        padding: 0%;
+        font-size: 1.48vw;
+    }
+    #inline-account a{
+        padding: 0%;
+        font-size: 1.48vw;
+    }
+    #login-button{
+        grid-area: button;
+        height: 3vw;
+        padding: 0%;
+        font-size: 1.48vw;
+        margin-top: 1.482vw;
+        color: white;
+        font-size: 1.482vw;
+        cursor: pointer;
+        width: 29.6vw;
+        height: 4.44vw;
+        background-color: black;
+        border-radius: 8.88vw;
+        align-items: center;
+    }
+    .footer{
+        background-color: rgba(0, 0, 0,1);
+        
+    }
+    .footer>.gambar{
+        justify-content: center;
+        display: flex;
+        
+    }
+    .footer .gambar a{
+        background-color: rgb(255, 255, 255);
+        padding: 1.482vw;
+        border-radius: 100%;
+        background-color: #d7eedd;
+        align-items: center;
+        display: flex;
+        margin: 1.482vw;
+        margin-top: 2.223vw;
+
+    }
+    .footer .gambar a>img{
+        width: 1.85vw;
+        height: 1.85vw;
+    }
+    .Copyright{
+        font-size: 1.48vw;
+    }
+
+    @media screen and (min-height: 86.83vw ){
+    .footer{
+        top: calc(100vh - 15vw);
+        width: 100vw;
+        position: absolute;
+    }
+}
+
+</style>
+</head>
+<body>
+    <a href="home"><img class="icon" src="gambar/pngwing.com (1).png" alt=""></a>
+    <div class="header">
+        <div class="title"><a href="home">Plantanalis</a></div>
+        <nav>
+            <ul><a href="kalkulasi"  style="text-decoration: none;display: flex;">Kalkulasi & Prediksi</a></ul>
+            <ul><a href="list_tanaman"  style="text-decoration: none;display: flex">List Tanaman</a></ul>
+            <ul><a href="rekomendasi"  style="text-decoration: none;display: flex">Rekomendasi</a></ul>
+        </nav>
+    </div>
+    <div class="content">
+        <img src="gambar/login.jpg" alt="">
+        <form autocomplete="off">
+            <h1 style="margin: top 2.96vw;text-align: center;font-family: system-ui, 
+            -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+            'Open Sans', 'Helvetica Neue', sans-serif;">Welcome, farmer</h1>
+            <span id="notif" style="color: red;"></span><br>
+            <input type="text" name="user" id="user" placeholder="Username Email or Phone Number" required><br>
+            <input type="password" name="pass" id="pass" placeholder="Password" required>
+            <button id="login-button" type="submit" >Sign Up</button>
+            <div id="inline-account">
+                <span style="color: gray;">have account?  </span>
+                <a style="color: blue;text-decoration: none;margin-left: 2vw;" href="login">Login</a>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        <div class="gambar">
+            <a href="" ><img src="gambar/instagram.svg" alt=""></a>
+            <a href=""><img src="gambar/twitter-x.svg" alt=""></a>
+            <a href=""><img src="gambar/facebook.svg" alt=""></a>
+        </div> <br>
+        <div class="Copyright" style="padding: 1.48vw;color: aliceblue;text-align: center;">
+          Copyright © 2023
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+    const button = document.getElementById("login-button");
+    const notif = document.getElementById("notif");
+
+    button.addEventListener("click",function(){
+        event.preventDefault()
+        const user = document.getElementById("user").value;
+        const pass = document.getElementById("pass").value;
+        if (user === "" & pass === ""){
+            notif.innerText = "Mohon masukan nama dan password!"
+        } else {
+            const request = "signup";
+            $.ajax({
+                url : "connection.php",
+                type : "POST",
+                data :{
+                    user : user,
+                    pass : pass,
+                    request : request
+                },
+                success: function(response){
+                    let hasil = JSON.parse(response);
+                    if (hasil.status === "gagal") {
+                        notif.innerHTML = hasil.message;
+                        
+                    } else {
+                        localStorage.removeItem('accounts');
+                        localStorage.setItem("login", "true");
+                        data = {
+                            "user" : hasil.user,
+                            "pass" : hasil.pass
+                        }
+                        localStorage.setItem('accounts',JSON.stringify(data));
+                        window.location.href = "home";
+                        
+                    }
+                }            
+            })
+        }})
+    
+</script>

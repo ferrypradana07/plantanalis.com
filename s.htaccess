@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /plantanalis.com/
+
+    # Jika file atau direktori fisik tidak ada, jalankan aturan berikutnya
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Mengubah /Kalkulasi menjadi /Kalkulasi.html
+    RewriteRule ^Kalkulasi$ Kalkulasi.html [NC,L]
+
+    # Mengubah /Administrator menjadi /Administrator.html
+    RewriteRule ^Administrator$ Administrator.html [NC,L]
+
+
+    # Mengubah /Rekomendasi menjadi /Rekomendasi.html
+    RewriteRule ^Rekomendasi$ Rekomendasi.html [NC,L]
+
+    # Mengubah /List Tanaman menjadi /List Tanaman.html
+    RewriteRule ^List\ Tanaman$ List\ Tanaman.html [NC,L]
+
+    #RewriteRule 
+    RewriteCond %{QUERY_STRING} ^query=([a-z]+)$
+    RewriteRule ^search$ Result.html [NC,L]
+
+    RewriteRule ^index$ index.html [NC,L]
+
+    RewriteRule ^Login$ Login.html [NC,L]
+
+    RewriteRule ^Signup$ Signup.html [NC,L]
+
+
+    RewriteRule ^plant$ Penyajian.html [NC,L]
+    RewriteRule ^tanaman/$ Penyajian.html [NC,L]
+
+</IfModule>
